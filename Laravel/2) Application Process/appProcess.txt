@@ -1,0 +1,9 @@
+1) Modélisation de la base de données avec Laravel Migrations
+
+2) Création des modèles ave Eloquent
+
+3) Création des Controllers et des Routes  
+
+4) Création des vues avec Blade
+
+5) Test et déploiement
