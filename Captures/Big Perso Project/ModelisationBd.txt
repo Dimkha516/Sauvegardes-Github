@@ -1,0 +1,75 @@
+    --- Users: email, password, 
+    
+    --- Agents: prenoms, nom, date_naiss, lieu_naiss, sexe, matricule, profile, solde, tel, adress, fonction_id, service_id, date_embauche
+
+    --- Fonctions: controlleur, rh, chauffeur????? 
+
+    --- Services:
+
+    --- Client: prenoms, nom, N°_Compte, solde, 
+
+    --- Enqueteurs: Prenoms, Nom, Matricule
+
+    --- Agence: Libellé, localisation 
+
+    --- Absence
+    
+    --- Conge
+    
+    --- Salaire
+
+    --- Evaluation
+
+    --- Courriers
+
+    --- banques_associees: 
+
+    --- Partenaires
+
+    --- Documents
+
+    --- Credit: N°, Date, client_id, Type, Statut, Montant
+
+    --- Operations: Date, Operateur, N°_Compte, Type, Credit, Debit
+
+    --- Enquetes: N°, Theme, enqueteur_id, date_debut, date_fin
+
+    --- Vehicules: N°_immat, date_immat, marque, genre, controle_technique(date), assurance(date)
+
+    --- affectation_vehicule: vehicule_id, agent_id, date_debut, date_fin
+
+    --- entretien_vehicule: vehicule_id, nature, date, partenaire_id, montant, facturation, chauffeur_agentId
+
+    --- dotation_carburant: type, vehicule_id(beneficiaire), date, partenaire_id
+
+    --- trajet_vehicule: libelle, vehicule_id, date, chauffeur_agentId, km_depart, km_arrive
+
+    --- chauffeurs_vehicules: chauffeur_agentId, adresse, date_lieu_naiss, telephone, email, numero_permis, type_permis, cni 
+
+    --- assurance_vehicules: partenaire_id, numero_police, vehicule_id, type_police, date_debut, date_fin, montant
+
+    --- depences_vehicules: vehicule_id, date, type_depense, chauffeur_agentId, lieu, montant
+
+    --- impression_copie: N°, date, agent_id, type, pages, status
+
+    --- stock_inventaire: REF, category, type, designation, agent_id, stock
+
+    --- stock_mouvement: NUM, type, date, mouvement, quantite, agent_id
+
+    --- controle_credit_client: date_verif, controlleur_agent_id, agence_id, client_id, type_credit, a_jour(bool)
+
+    --- controle_depot_client: date_verif, controlleur_agent_id, agence_id, client_id, montant, authenticite
+
+    --- controle_tresorerie: date_verif, controlleur_agent_id, agence_id, client_id, type(encaiss, decaiss), montant, solde
+
+    --- controle_inter_banques: date_verif, controlleur_agent_id, banques_associeesId, pays, type_operation, montant
+
+    --- controle_risque_paiement: date_verif, controlleur_agent_id, agence_id, client_id, moyen_payement, montant, type_fraude
+
+    --- controle_risque_marche_titre: date_verif, controlleur_agent_id, part_ach_vend, valeur_part, titre, montant
+
+    --- controle_risque_IT: date_verif, controlleur_agent_id, agence_id, pays, type_attaque, montant
+
+    --- remboursements: N°, date, type, client_id, montant_initial, status
+
+    --- agenda: evenements(formation, reunion, conference, feries), libelle, lieu, date, status
