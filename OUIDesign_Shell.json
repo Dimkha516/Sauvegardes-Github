@@ -1,0 +1,303 @@
+{
+  "type": "Root",
+  "body": {
+    "type": "Form",
+    "id": "f",
+    "child": {
+      "type": "Padding",
+      "padding": "8,8,8,8",
+      "child": {
+        "type": "Column",
+        "children": [
+          {
+            "type": "Text",
+            "data": "%ENTER_CARD",
+            "style": {
+              "fontWeight": "normal",
+              "fontStyle": "normal"
+            }
+          },
+          {
+            "type": "Controller",
+            "visibility": {
+              "on": true
+            },
+            "update": {
+              "on": "stateChange",
+              "keys": "step"
+            },
+            "child": {
+              "type": "TextField",
+              "name": "card",
+              "inputmode": "number",
+              "textAlign": "start",
+              "obscured": false,
+              "obscureCharacter": "•",
+              "disableIf": "<en>\n!!stateGet(\"step\")",
+              "onChange": "<en>\nif(form_is_valid_card()) {\n  card = form_card()\n  stateSet('card', card)\n}else{\n  stateSet('card', null)\n}\n",
+              "focus": "<en>\n",
+              "mask": "000-000-0000",
+              "validator": {
+                "required": {
+                  "value": true
+                },
+                "minLength": {
+                  "value": 10
+                },
+                "maxLength": {
+                  "value": 10
+                },
+                "pattern": {},
+                "expr": {}
+              }
+            }
+          },
+          {
+            "type": "Controller",
+            "visibility": {
+              "on": true,
+              "when": "<en>\n!!stateGet(\"card\")"
+            },
+            "update": {
+              "on": "stateChange",
+              "keys": "checkCard"
+            },
+            "child": {
+              "type": "FutureView",
+              "array": true,
+              "loader": "<en>\ncards = [\n  {number: \"1442559912\", name:\"Mohamadou Bobo SOW\"},\n  {number: \"1442559913\", name:\"Aissatou DIOP\"},\n  {number: \"1442559914\", name:\"Fatoumata DIA\"},\n  {number: \"1442559911\", name:\"Ahmadou BAMBA\"} \n ]\ncard = stateGet(\"card\")\nfor c in cards{\n  if(c['number']==card){\n    stateSet({\n      name: c['name'],\n      step: 1\n    })\n    return \n  }\n}\nshowSuguError(translate(\"WRONG_CARD\", {N: card}))",
+              "showLoader": true,
+              "variableName": "_DATA"
+            }
+          },
+          {
+            "type": "Controller",
+            "visibility": {
+              "on": true,
+              "when": "<en>\n stateGet('step') == 1"
+            },
+            "update": {
+              "on": "stateChange",
+              "keys": "step"
+            },
+            "child": {
+              "type": "Column",
+              "children": [
+                {
+                  "type": "Text",
+                  "data": "%AMOUNT",
+                  "textAlign": "left",
+                  "style": {
+                    "fontWeight": "normal",
+                    "fontStyle": "normal"
+                  }
+                },
+                {
+                  "type": "TextField",
+                  "name": "amount",
+                  "initialValue": "",
+                  "inputmode": "number",
+                  "textAlign": "start",
+                  "obscured": false,
+                  "obscureCharacter": "•",
+                  "hint": "0",
+                  "disableIf": "<en>\n\nstateGet('step') && stateGet('step') > 2",
+                  "onChange": "<en>\nvalid = form_is_valid_amount()\nif(valid){\n  THIS['amount'] = form_amount()\n  stateSet('amount', form_amount())\n}else{\n  THIS['amount'] = null\n  stateSet('amount', null)\n}",
+                  "mask": "money: :7",
+                  "validator": {
+                    "required": {},
+                    "minLength": {
+                      "message": ""
+                    },
+                    "maxLength": {},
+                    "pattern": {},
+                    "expr": {
+                      "value": "<en>\n\nlog('_value', _value)\n\n(toNumber(_value) ?? 0) >= (INPUT['minAmount'] ?? 0) && (toNumber(_value) ?? 0) <= (INPUT['maxAmount'] ?? 1000000)",
+                      "message": "${translate('AMOUNT_WARNING', {X: toCurrency(INPUT['minAmount'], 'XOF'), Y: toCurrency(INPUT['maxAmount'], 'XOF')})}"
+                    }
+                  }
+                },
+                {
+                  "type": "GridView",
+                  "children": [],
+                  "loader": "<en>\nreturn [5000, 10000, 20000, 50000, 100000, 200000]\n",
+                  "infinite": false,
+                  "scrollDirection": "vertical",
+                  "model": {
+                    "type": "Container",
+                    "child": {
+                      "type": "DynamicText",
+                      "data": "${toCurrency(_DATA, 'XOF')}",
+                      "textAlign": "center",
+                      "style": {
+                        "color": "theme:primary",
+                        "fontWeight": "bold",
+                        "fontStyle": "normal"
+                      }
+                    },
+                    "margin": "0,0,0,0",
+                    "padding": "0,15,0,0",
+                    "size": {
+                      "height": ""
+                    },
+                    "shape": {
+                      "side": {
+                        "color": "theme:primary",
+                        "style": "solid"
+                      },
+                      "borderRadius": "8,8,8,8"
+                    },
+                    "click_event": "<en>\nlog('amount', _DATA)\nstateSet('selectedAmount', _DATA)\n"
+                  },
+                  "columnCount": 3,
+                  "columnGap": 10,
+                  "rowGap": 10,
+                  "ratio": 2,
+                  "padding": "0,10,0,0",
+                  "variableName": "_DATA"
+                },
+                {
+                  "type": "Controller",
+                  "visibility": {
+                    "on": true,
+                    "when": "<en>\namount = stateGet('selectedAmount')\nif(!!amount){\n  THIS['amount'] = amount\n  form_set_amount(\"\"+amount)\n  stateSet('selectedAmount', null)\n}\n\n\n"
+                  },
+                  "update": {
+                    "on": "stateChange",
+                    "keys": "selectedAmount"
+                  }
+                }
+              ],
+              "crossAxisAlignment": "start",
+              "mainAxisAlignment": "start",
+              "mainAxisSize": "max",
+              "verticalDirection": "down"
+            }
+          },
+          {
+            "type": "Controller",
+            "visibility": {
+              "on": true,
+              "when": "<en>\n\n"
+            },
+            "update": {
+              "on": "stateChange",
+              "keys": "selectedAmount"
+            },
+            "child": {
+              "type": "FutureView",
+              "array": false,
+              "loader": "<en>\nstep = stateGet('step')\namount = THIS['amount']\nlog('amount--', amount, !!amount)\nif(!amount){\n  return\n}\nfees = getFees({\n  amount: amount,\n  service: \"SHELL\",\n  code: \"SHELL\"\n}) ?? 0\ntotal = amount+fees\n\nr = modal('chooseWallet',{\n      counter: stateGet('card'), \n      amount: toNumber(amount),\n      fees: toNumber(fees),\n      total: toNumber(total),\n      name: stateGet('name'),\n      title: \"SHELL\",\n      image: \"1734021126275.png\",\n  \t  units: _msisdn()\n      \n    }, {\"dismissible\": true, bottomModal: true, container: 'wall_modal'})\n    \nif(_RET_[\"validated\"]){\nparams = {\n      title: translate(\"TITLE\"),\n      amount: amount,\n      payedWith: \"OM\",\n      type: \"BILL\",\n      pin: _RET_['criptedPin'],\n      fees: fees,\n      total: total,\n      targetName: translate(\"CARD\"),\n      target: stateGet('card'),\n      token: \"TESTTTTTTT\",\n      tokenName: translate('TOKEN'),\n      tokenShareText: translate('SHARE_TOKEN', {METER: card, CODE: stringMask(_RET_['rechargeCode'], 4, '-') ?? _RET_['rechargeCode'], QUANTITY: _RET_['rechargeValue'] + _RET_['unit'], UNIT: _RET_['unit']})\n    }\n    showSuguResume(params)\n    \n  \n  logData = {\n    meter: GLOBAL['counter'],\n    amount: amount,\n    fees: fees,\n    totalAmount: total,\n    value: amount,\n    currency: \"XOF\",\n  }\n\n  logEvent(\"GA|SYSTEM|BATCH\", \"PAY_ISAGO\", {\n    \"ga_event\": event,\n    \"batch_event\": event,\n    \"service\": \"ISAGO\",\n    \"extra\": logData,\n    \"ga\": logData,\n    \"batch\": logData,\n    \"amount\": amount,\n    \"fees\": fees,\n    \"status\": error ?? \"SUCCEED\",\n    \"txnId\": OUTPUT[\"txnId\"],\n  })\n  \n  if(error != null) {\n    showSuguError(error)\n  }\n}\n ",
+              "showLoader": false,
+              "variableName": "_DATA"
+            },
+            "id": ""
+          }
+        ],
+        "crossAxisAlignment": "start",
+        "mainAxisAlignment": "start",
+        "mainAxisSize": "max",
+        "verticalDirection": "down"
+      }
+    }
+  },
+  "appBar": {
+    "type": "AppBar",
+    "title": {
+      "type": "Text",
+      "data": "%TITLE",
+      "style": {
+        "fontWeight": "normal",
+        "fontStyle": "normal"
+      }
+    },
+    "actions": [],
+    "hideBackButton": false
+  },
+  "bottom": {
+    "type": "Controller",
+    "visibility": {
+      "on": true,
+      "when": "<en>\n"
+    },
+    "update": {
+      "on": "stateChange",
+      "keys": "card, step"
+    },
+    "child": {
+      "type": "Padding",
+      "padding": "8,8,8,8",
+      "child": {
+        "type": "Row",
+        "children": [
+          {
+            "type": "Expanded",
+            "child": {
+              "type": "Controller",
+              "visibility": {
+                "on": true,
+                "when": "<en>\n\nstateGet(\"page\") != \"Historique\""
+              },
+              "update": {
+                "on": "stateChange"
+              },
+              "child": {
+                "type": "Padding",
+                "padding": "0,0,5,0",
+                "child": {
+                  "type": "OButton",
+                  "text": "%PREVIOUS",
+                  "iconFill": "solid",
+                  "iconSlot": "start",
+                  "fill": "outline",
+                  "foregroundColor": "theme:onBackground",
+                  "overlayColor": "#ffffff",
+                  "padding": "4,4,4,4",
+                  "textStyle": {
+                    "fontWeight": "normal",
+                    "fontStyle": "normal"
+                  },
+                  "shape": 6,
+                  "borderColor": "theme:onBackground",
+                  "click_event": "<en>\nstep = stateGet(\"step\")\nif(step){\n  stateSet(\"step\", step-1)\n}else{\n  back()\n}"
+                }
+              }
+            },
+            "flex": 1
+          },
+          {
+            "type": "Expanded",
+            "child": {
+              "type": "Padding",
+              "padding": "0,0,5,0",
+              "child": {
+                "type": "OButton",
+                "text": "%CONTINUE",
+                "iconFill": "solid",
+                "iconSlot": "end",
+                "fill": "solid",
+                "foregroundColor": "theme:onPrimary",
+                "backgroundColor": "theme:primary",
+                "disableIf": "<en>\nreturn !stateGet('card')",
+                "padding": "4,4,4,4",
+                "textStyle": {
+                  "fontWeight": "normal",
+                  "fontStyle": "normal"
+                },
+                "shape": 6,
+                "click_event": "<en>\nstep = stateGet('step')\nif(!step){\n  stateSet(\"checkCard\", true)\n}else if(step==1){\n  stateSet(\"selectedAmount\", stateGet('amount'))\n}"
+              }
+            },
+            "flex": 1
+          }
+        ],
+        "crossAxisAlignment": "center",
+        "mainAxisAlignment": "spaceAround",
+        "mainAxisSize": "max",
+        "verticalDirection": "down"
+      }
+    }
+  },
+  "scrollable": true,
+  "floatingActionButtonLocation": "endFloat"
+}
