@@ -11,3 +11,5 @@ webmail.orange-sonatel.com : microsoft outlook
 Wifi-visiteur: 
 stg_mbow87192@orange-sonatel.com
 C{9uxo2r#
+
+Pin Windows: 1478
