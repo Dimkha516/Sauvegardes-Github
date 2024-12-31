@@ -1,15 +1,2 @@
-Twillio password: A25/kikoA25/kiko
-Twillio Code: V86J891N2BP9KS56PPJ6H6VZ
-Auth ngrok: 7P4AURWL344FOW64Y7EMGJIQ7HMQEAQC
-Mail Professionnel: bamba.pro516@gmail.com
 Lien pour générer un QR Code vers un fichier: https://me-qr.com/fr/qr-code-generator/qr
 
-webmail.orange-sonatel.com : microsoft outlook
-  stg_mbow87192
-  A25/kiko
-
-Wifi-visiteur: 
-stg_mbow87192@orange-sonatel.com
-C{9uxo2r#
-
-Pin Windows: 1478
