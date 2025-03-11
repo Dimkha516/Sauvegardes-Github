@@ -1,3 +1,4 @@
 Lien pour générer un QR Code vers un fichier: https://me-qr.com/fr/qr-code-generator/qr
 Lien vers mon Site-CV: https://dimkha516.github.io/Mon-CV/ 
 Mon Portfolio: https://dimkha516.github.io/Portfolio-Bamba/ 
+Site pour professionaliser photos: https://app.pfpmaker.com/
