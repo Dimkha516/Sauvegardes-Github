@@ -2,3 +2,4 @@ Lien pour générer un QR Code vers un fichier: https://me-qr.com/fr/qr-code-gen
 Lien vers mon Site-CV: https://dimkha516.github.io/Mon-CV/ 
 Mon Portfolio: https://dimkha516.github.io/Portfolio-Bamba/ 
 Site pour professionaliser photos: https://app.pfpmaker.com/
+Site pour diagrammes de séquence: https://www.mermaidchart.com/play?utm_source=mermaid_live_editor&utm_medium=banner_ad&utm_campaign=AIbundle_B#pako:eNqrVkrOT0lVslJSqgUAFW4DVg
