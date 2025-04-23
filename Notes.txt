@@ -4,6 +4,7 @@ Mon Portfolio: https://dimkha516.github.io/Portfolio-Bamba/
 Site pour professionaliser photos: https://app.pfpmaker.com/
 Site pour diagrammes de séquence: https://www.mermaidchart.com/play?utm_source=mermaid_live_editor&utm_medium=banner_ad&utm_campaign=AIbundle_B#pako:eNqrVkrOT0lVslJSqgUAFW4DVg
 Site pour modélisation tables de base de données avec mise en relation avec code: https://dbdiagram.io/d 
+Site de candidature emplois: https://globaltalnt.zohorecruit.com/candidateportal/profile
 
 Sites Remote: 
 1: https://weworkremotely.com/
