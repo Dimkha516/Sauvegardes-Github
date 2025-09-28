@@ -40,6 +40,7 @@ https://github.com/pharell98/front-ofms-campagne/tree/dev-sidydiop.balde
 https://github.com/ofms-campagne/back-campagne-ofms/tree/dev-sidydiop.balde
 
 
+Excel: Formule pour créer un QrCode pour un lien: =image("https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="&LE_LIEN);
 
 
 
