@@ -42,5 +42,15 @@ https://github.com/ofms-campagne/back-campagne-ofms/tree/dev-sidydiop.balde
 
 Excel: Formule pour créer un QrCode pour un lien: =image("https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="&LE_LIEN);
 
+La sandbox PI-SPI de la BCEAO est ouverte !
+
+Les développeurs et fintechs de l’UEMOA peuvent désormais tester l’API Business de la Plateforme Interopérable du Système de Paiement Instantané (PI-SPI).
+C’est une avancée majeure pour :
+✅ Éliminer les contraintes d’interopérabilité
+✅ Créer des solutions financières accessibles dans toute la zone UEMOA
+✅ Stimuler l’innovation et l’inclusion financière
+Une opportunité en or pour innover et créer des services financiers accessibles à tous !
+👉 Accédez à la sandbox : https://lnkd.in/efQjdPh7
+👉 Accédez directement à la doc de l'API : https://lnkd.in/eSvpjXPi
 
 
