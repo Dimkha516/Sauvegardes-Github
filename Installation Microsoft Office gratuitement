@@ -1,0 +1,24 @@
+ETAPE 1: 
+1: Navigateur: Office customization tool
+2: Suite Office: Office LTSC Professionnel Plus 2021 - Licence en volume
+3: Suivant
+4: Langue
+5: Suivant
+6: Mise à jour et mise à niveau: Déchocher Désinstaller les versions MSI d'office, y compris Visio et Project
+7: Suivant
+8: SUivant partout jusqu'à Terminer
+9: Exporter
+10: Cocher sur Formats Office Open XML 
+11: Un fichier Configuration.xml sera téléchargé. 
+
+ETAPE 2: 
+1: Navigateur: Office deployment tool
+2: Télécharger le fichier officedeploymenttool
+3: Mettre les deux fichiers téléchargés dans un dossier Microsoft Office 
+4: Exécuter le fichier officedeploymenttool en tant qu'administrateur.
+5: Accepter les CGU et lancer
+6: Déplacer le dossier dans le disque local C
+7: Exécuter CMD en tant qu'admin
+8: Taper les commandes: 
+	-- cd c:\Microsoft Office    
+	-- setup/configure configuration.xml
