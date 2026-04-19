@@ -51,6 +51,6 @@ C’est une avancée majeure pour :
 ✅ Stimuler l’innovation et l’inclusion financière
 Une opportunité en or pour innover et créer des services financiers accessibles à tous !
 👉 Accédez à la sandbox : https://lnkd.in/efQjdPh7
-👉 Accédez directement à la doc de l'API : https://lnkd.in/eSvpjXPi
+👉 Accédez directement à la doc de l'API : https://developer.pispi.bceao.int/api-business/introduction
 
 
